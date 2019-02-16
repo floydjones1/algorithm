@@ -1,0 +1,149 @@
+<!DOCTYPE>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+	<canvas id="chart"></canvas>
+</div>
+</body>
+
+</html>
+
+
+<script>
+<!-- var parent = document.querySelector('body'); -->
+<!-- var tag = parent.getElementsByTagName('h1'); -->
+<!-- console.log(tag); -->
+
+
+var arr = [];
+var myChart;
+var time = 100;
+
+	function mergeSort(arr, low, high){
+		let middle;
+		
+		if(time > 1){
+			time +=  50;
+		}
+		if(low<high){
+			
+			if(high.length % 2 == 0){
+				middle = (low + high)/2;
+			}else{
+				middle = (low + high)/2;
+				middle = Math.floor(middle);
+			}
+			mergeSort(arr, low, middle);
+			mergeSort(arr, middle+1, high);
+			setTimeout(function(){
+				merge(arr, low, middle, high)
+			},time);
+			
+		}
+	}
+	
+	function merge(arr, low, middle, high){
+		arr1 = [];
+		arr2 = [];
+		
+		for(let i = low; i <= middle; i++){
+			arr1.push(arr[i]);
+		}
+		
+		for(let i = middle+1; i <= high; i++){
+			arr2.push(arr[i]);
+		}
+		
+		let firstIndex = 0;
+		let secondIndex = 0;
+		
+		while(firstIndex < arr1.length && secondIndex < arr2.length){
+
+			if(arr1[firstIndex] <= arr2[secondIndex]){
+				arr[low] = arr1[firstIndex];
+				firstIndex++;
+			}else{
+				arr[low] = arr2[secondIndex]
+				secondIndex++;
+			}
+			low++;
+		}
+		
+		
+		while(firstIndex < arr1.length){
+			arr[low] = arr1[firstIndex];
+			firstIndex++;
+			low++;
+		}		
+		while(secondIndex < arr2.length){
+			arr[low] = arr2[secondIndex];
+			secondIndex++;
+			low++;
+		}
+		
+		myChart.update();
+		//console.log(arr);
+	}
+	
+	$(document).ready(function(){
+	for (let i = 0; i != 500; i++){
+		arr.push(Math.floor((Math.random() * 1000) + 1));
+	}
+	console.log(arr);
+	let ctx = document.getElementById("chart").getContext('2d');
+	myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: arr,
+            datasets: [{
+                label: "Numbee",
+                data: arr,
+                backgroundColor: "rgba(0,60,100,1)",
+				strokeColor: "red",
+                borderWidth: 1
+                   }]
+                  },
+                    options:{
+                      title:{
+                        display: true,
+                        text: "Merge Sort",
+                        fontSize: 22
+                      },
+                    legend:{
+                      display:false, 
+                    },
+                    scales:{
+                      yAxes:[{
+                        scaleLabel: {
+                          display: true,
+                          labelString: 'Number of Updates',
+                          fontSize: 15
+                        },
+                        ticks: {
+                          beginAtZero: true
+                        }
+                      }]
+                    }
+                    },        
+                  });
+				  
+				  //myChart.defaults.global.defaultColor = 'rgba(255, 99, 132, 0.2)';
+
+		console.log(myChart);
+		mergeSort(arr, 0, arr.length-1);
+		console.log(arr);
+
+	
+	
+	
+
+	});
+	
+</script>
