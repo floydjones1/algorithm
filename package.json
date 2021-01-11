@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist/main* && webpack",
+    "build": "rm -rf docs/main* && webpack",
     "start": "webpack serve --open"
   },
   "repository": {

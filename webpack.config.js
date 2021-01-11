@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'docs')
   },
   resolve : {
     extensions: ['.ts', '.js']
@@ -34,6 +34,6 @@ module.exports = {
   devtool: 'source-map',
 
   devServer : {
-    contentBase: './dist'
+    contentBase: './docs'
   }
 }
