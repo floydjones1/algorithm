@@ -1,0 +1,33 @@
+{
+  "name": "algorithm",
+  "version": "1.0.0",
+  "description": "A project where I will be coding some algorithms and attempt to display it visually using charts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf dist/main* && webpack",
+    "start": "webpack serve --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/floydjones1/algorithm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/floydjones1/algorithm/issues"
+  },
+  "homepage": "https://github.com/floydjones1/algorithm#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
+    "typescript": "^4.1.3",
+    "webpack": "^5.12.3",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1"
+  },
+  "dependencies": {
+    "ts-loader": "^8.0.14"
+  }
+}
