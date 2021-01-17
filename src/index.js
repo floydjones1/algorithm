@@ -1,4 +1,6 @@
+
 import mergeSort from "./merge";
+import Chart from 'chart.js'
 import "./style/main.scss";
 
 export var myChart;
